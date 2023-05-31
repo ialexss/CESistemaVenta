@@ -1,0 +1,818 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CasoEstudioSistemaVentasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Almacen" Type="varchar" MaxLength="255" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="AlmacenProducto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="Nit" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="DetalleVenta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdVenta" Type="int" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NumeroFactura" Type="varchar" MaxLength="50" />
+          <Property Name="FechaEmision" Type="date" />
+          <Property Name="MontoFactura" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="VentaId" Type="int" />
+        </EntityType>
+        <EntityType Name="Juridico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="255" />
+          <Property Name="RepresentanteLegal" Type="varchar" MaxLength="255" />
+          <Property Name="NroRegistro" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NombreMarca" Type="varchar" MaxLength="255" />
+          <Property Name="PaisProcedenciaId" Type="int" />
+        </EntityType>
+        <EntityType Name="Natural">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NombreCliente" Type="varchar" MaxLength="255" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="255" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="255" />
+          <Property Name="FechaNacimiento" Type="date" />
+          <Property Name="DocumentoIdentidad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PaisProcedencia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NombrePais" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Precio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FechaInicial" Type="date" />
+          <Property Name="FechaFinal" Type="date" />
+          <Property Name="Precio" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ProductoId" Type="int" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NombreProducto" Type="varchar" MaxLength="255" />
+          <Property Name="MarcaId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FechaVenta" Type="date" />
+          <Property Name="EstadoVenta" Type="varchar" MaxLength="50" />
+          <Property Name="SubTotal" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ClienteId" Type="int" />
+        </EntityType>
+        <Association Name="FK__AlmacenPr__IdAlm__60A75C0F">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="0..1" />
+          <End Role="AlmacenProducto" Type="Self.AlmacenProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlmacenProducto">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AlmacenPr__IdPro__619B8048">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="AlmacenProducto" Type="Self.AlmacenProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlmacenProducto">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__IdPro__5812160E">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleVenta">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__IdVen__571DF1D5">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="0..1" />
+          <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleVenta">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Factura__VentaId__412EB0B6">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="VentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Juridico__Id__267ABA7A">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Juridico" Type="Self.Juridico" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Juridico">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marca__PaisProce__5165187F">
+          <End Role="PaisProcedencia" Type="Self.PaisProcedencia" Multiplicity="0..1" />
+          <End Role="Marca" Type="Self.Marca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaisProcedencia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Marca">
+              <PropertyRef Name="PaisProcedenciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Natural__Id__29572725">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Natural" Type="Self.Natural" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Natural">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Precio__Producto__5CD6CB2B">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Precio" Type="Self.Precio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Precio">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__MarcaI__5441852A">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Venta__ClienteId__2C3393D0">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venta">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CasoEstudioSistemaVentasModelStoreContainer">
+          <EntitySet Name="Almacen" EntityType="Self.Almacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AlmacenProducto" EntityType="Self.AlmacenProducto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleVenta" EntityType="Self.DetalleVenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Juridico" EntityType="Self.Juridico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Natural" EntityType="Self.Natural" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaisProcedencia" EntityType="Self.PaisProcedencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Precio" EntityType="Self.Precio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AlmacenPr__IdAlm__60A75C0F" Association="Self.FK__AlmacenPr__IdAlm__60A75C0F">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="AlmacenProducto" EntitySet="AlmacenProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AlmacenPr__IdPro__619B8048" Association="Self.FK__AlmacenPr__IdPro__619B8048">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="AlmacenProducto" EntitySet="AlmacenProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__IdPro__5812160E" Association="Self.FK__DetalleVe__IdPro__5812160E">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__IdVen__571DF1D5" Association="Self.FK__DetalleVe__IdVen__571DF1D5">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Factura__VentaId__412EB0B6" Association="Self.FK__Factura__VentaId__412EB0B6">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Juridico__Id__267ABA7A" Association="Self.FK__Juridico__Id__267ABA7A">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Juridico" EntitySet="Juridico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marca__PaisProce__5165187F" Association="Self.FK__Marca__PaisProce__5165187F">
+            <End Role="PaisProcedencia" EntitySet="PaisProcedencia" />
+            <End Role="Marca" EntitySet="Marca" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Natural__Id__29572725" Association="Self.FK__Natural__Id__29572725">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Natural" EntitySet="Natural" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Precio__Producto__5CD6CB2B" Association="Self.FK__Precio__Producto__5CD6CB2B">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Precio" EntitySet="Precio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__MarcaI__5441852A" Association="Self.FK__Producto__MarcaI__5441852A">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Venta__ClienteId__2C3393D0" Association="Self.FK__Venta__ClienteId__2C3393D0">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Venta" EntitySet="Venta" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CasoEstudioSistemaVentasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Almacen1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AlmacenProducto" Relationship="Self.FK__AlmacenPr__IdAlm__60A75C0F" FromRole="Almacen" ToRole="AlmacenProducto" />
+        </EntityType>
+        <EntityType Name="AlmacenProducto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK__AlmacenPr__IdAlm__60A75C0F" FromRole="AlmacenProducto" ToRole="Almacen" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__AlmacenPr__IdPro__619B8048" FromRole="AlmacenProducto" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Juridico" Relationship="Self.FK__Juridico__Id__267ABA7A" FromRole="Cliente" ToRole="Juridico" />
+          <NavigationProperty Name="Natural" Relationship="Self.FK__Natural__Id__29572725" FromRole="Cliente" ToRole="Natural" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__ClienteId__2C3393D0" FromRole="Cliente" ToRole="Venta" />
+        </EntityType>
+        <EntityType Name="DetalleVenta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdVenta" Type="Int32" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__DetalleVe__IdPro__5812160E" FromRole="DetalleVenta" ToRole="Producto" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__DetalleVe__IdVen__571DF1D5" FromRole="DetalleVenta" ToRole="Venta" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NumeroFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEmision" Type="DateTime" Precision="0" />
+          <Property Name="MontoFactura" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="VentaId" Type="Int32" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Factura__VentaId__412EB0B6" FromRole="Factura" ToRole="Venta" />
+        </EntityType>
+        <EntityType Name="Juridico">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RepresentanteLegal" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NroRegistro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Juridico__Id__267ABA7A" FromRole="Juridico" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NombreMarca" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PaisProcedenciaId" Type="Int32" />
+          <NavigationProperty Name="PaisProcedencia" Relationship="Self.FK__Marca__PaisProce__5165187F" FromRole="Marca" ToRole="PaisProcedencia" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__MarcaI__5441852A" FromRole="Marca" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Natural">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NombreCliente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
+          <Property Name="DocumentoIdentidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Natural__Id__29572725" FromRole="Natural" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="PaisProcedencia">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NombrePais" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Precio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FechaInicial" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinal" Type="DateTime" Precision="0" />
+          <Property Name="Precio1" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ProductoId" Type="Int32" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Precio__Producto__5CD6CB2B" FromRole="Precio" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NombreProducto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MarcaId" Type="Int32" />
+          <NavigationProperty Name="AlmacenProducto" Relationship="Self.FK__AlmacenPr__IdPro__619B8048" FromRole="Producto" ToRole="AlmacenProducto" />
+          <NavigationProperty Name="DetalleVenta" Relationship="Self.FK__DetalleVe__IdPro__5812160E" FromRole="Producto" ToRole="DetalleVenta" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK__Producto__MarcaI__5441852A" FromRole="Producto" ToRole="Marca" />
+          <NavigationProperty Name="Precio" Relationship="Self.FK__Precio__Producto__5CD6CB2B" FromRole="Producto" ToRole="Precio" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FechaVenta" Type="DateTime" Precision="0" />
+          <Property Name="EstadoVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubTotal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="ClienteId" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Venta__ClienteId__2C3393D0" FromRole="Venta" ToRole="Cliente" />
+          <NavigationProperty Name="DetalleVenta" Relationship="Self.FK__DetalleVe__IdVen__571DF1D5" FromRole="Venta" ToRole="DetalleVenta" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__VentaId__412EB0B6" FromRole="Venta" ToRole="Factura" />
+        </EntityType>
+        <Association Name="FK__AlmacenPr__IdAlm__60A75C0F">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="0..1" />
+          <End Role="AlmacenProducto" Type="Self.AlmacenProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlmacenProducto">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AlmacenPr__IdPro__619B8048">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="AlmacenProducto" Type="Self.AlmacenProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AlmacenProducto">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Juridico__Id__267ABA7A">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Juridico" Type="Self.Juridico" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Juridico">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Natural__Id__29572725">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Natural" Type="Self.Natural" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Natural">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Venta__ClienteId__2C3393D0">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venta">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__IdPro__5812160E">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleVenta">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleVe__IdVen__571DF1D5">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="0..1" />
+          <End Role="DetalleVenta" Type="Self.DetalleVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleVenta">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Factura__VentaId__412EB0B6">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="0..1" />
+          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Factura">
+              <PropertyRef Name="VentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Marca__PaisProce__5165187F">
+          <End Role="PaisProcedencia" Type="Self.PaisProcedencia" Multiplicity="0..1" />
+          <End Role="Marca" Type="Self.Marca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaisProcedencia">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Marca">
+              <PropertyRef Name="PaisProcedenciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__MarcaI__5441852A">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Precio__Producto__5CD6CB2B">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+          <End Role="Precio" Type="Self.Precio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Precio">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CasoEstudioSistemaVentasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Almacen" EntityType="Self.Almacen" />
+          <EntitySet Name="AlmacenProducto" EntityType="Self.AlmacenProducto" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="DetalleVenta" EntityType="Self.DetalleVenta" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" />
+          <EntitySet Name="Juridico" EntityType="Self.Juridico" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Natural" EntityType="Self.Natural" />
+          <EntitySet Name="PaisProcedencia" EntityType="Self.PaisProcedencia" />
+          <EntitySet Name="Precio" EntityType="Self.Precio" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Venta" EntityType="Self.Venta" />
+          <AssociationSet Name="FK__AlmacenPr__IdAlm__60A75C0F" Association="Self.FK__AlmacenPr__IdAlm__60A75C0F">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="AlmacenProducto" EntitySet="AlmacenProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AlmacenPr__IdPro__619B8048" Association="Self.FK__AlmacenPr__IdPro__619B8048">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="AlmacenProducto" EntitySet="AlmacenProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Juridico__Id__267ABA7A" Association="Self.FK__Juridico__Id__267ABA7A">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Juridico" EntitySet="Juridico" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Natural__Id__29572725" Association="Self.FK__Natural__Id__29572725">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Natural" EntitySet="Natural" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Venta__ClienteId__2C3393D0" Association="Self.FK__Venta__ClienteId__2C3393D0">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Venta" EntitySet="Venta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__IdPro__5812160E" Association="Self.FK__DetalleVe__IdPro__5812160E">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleVe__IdVen__571DF1D5" Association="Self.FK__DetalleVe__IdVen__571DF1D5">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="DetalleVenta" EntitySet="DetalleVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Factura__VentaId__412EB0B6" Association="Self.FK__Factura__VentaId__412EB0B6">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Marca__PaisProce__5165187F" Association="Self.FK__Marca__PaisProce__5165187F">
+            <End Role="PaisProcedencia" EntitySet="PaisProcedencia" />
+            <End Role="Marca" EntitySet="Marca" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__MarcaI__5441852A" Association="Self.FK__Producto__MarcaI__5441852A">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Precio__Producto__5CD6CB2B" Association="Self.FK__Precio__Producto__5CD6CB2B">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Precio" EntitySet="Precio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CasoEstudioSistemaVentasModelStoreContainer" CdmEntityContainer="CasoEstudioSistemaVentasEntities">
+          <EntitySetMapping Name="Almacen">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Almacen">
+              <MappingFragment StoreEntitySet="Almacen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Almacen1" ColumnName="Almacen" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlmacenProducto">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.AlmacenProducto">
+              <MappingFragment StoreEntitySet="AlmacenProducto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleVenta">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.DetalleVenta">
+              <MappingFragment StoreEntitySet="DetalleVenta">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NumeroFactura" ColumnName="NumeroFactura" />
+                <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+                <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
+                <ScalarProperty Name="VentaId" ColumnName="VentaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Juridico">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Juridico">
+              <MappingFragment StoreEntitySet="Juridico">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="RepresentanteLegal" ColumnName="RepresentanteLegal" />
+                <ScalarProperty Name="NroRegistro" ColumnName="NroRegistro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreMarca" ColumnName="NombreMarca" />
+                <ScalarProperty Name="PaisProcedenciaId" ColumnName="PaisProcedenciaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Natural">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Natural">
+              <MappingFragment StoreEntitySet="Natural">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="DocumentoIdentidad" ColumnName="DocumentoIdentidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaisProcedencia">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.PaisProcedencia">
+              <MappingFragment StoreEntitySet="PaisProcedencia">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombrePais" ColumnName="NombrePais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Precio">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Precio">
+              <MappingFragment StoreEntitySet="Precio">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="Precio1" ColumnName="Precio" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Venta">
+            <EntityTypeMapping TypeName="CasoEstudioSistemaVentasModel.Venta">
+              <MappingFragment StoreEntitySet="Venta">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FechaVenta" ColumnName="FechaVenta" />
+                <ScalarProperty Name="EstadoVenta" ColumnName="EstadoVenta" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
