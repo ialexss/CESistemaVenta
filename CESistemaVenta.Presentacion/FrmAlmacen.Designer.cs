@@ -38,7 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbDescripcion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -122,12 +122,12 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Codigo";
             // 
-            // textBox1
+            // txbDescripcion
             // 
-            this.textBox1.Location = new System.Drawing.Point(162, 87);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(171, 20);
-            this.textBox1.TabIndex = 28;
+            this.txbDescripcion.Location = new System.Drawing.Point(162, 87);
+            this.txbDescripcion.Name = "txbDescripcion";
+            this.txbDescripcion.Size = new System.Drawing.Size(171, 20);
+            this.txbDescripcion.TabIndex = 28;
             // 
             // label4
             // 
@@ -143,7 +143,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txbDescripcion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBuscar);
@@ -174,7 +174,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbDescripcion;
         private System.Windows.Forms.Label label4;
     }
 }
