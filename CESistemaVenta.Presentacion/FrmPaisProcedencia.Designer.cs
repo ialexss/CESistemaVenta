@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPaisProcedencia));
             this.label1 = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.txbNombre = new System.Windows.Forms.TextBox();
@@ -136,8 +137,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txbId);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPaisProcedencia";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar país de procedencia";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
