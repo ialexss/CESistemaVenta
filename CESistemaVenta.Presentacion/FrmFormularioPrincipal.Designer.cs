@@ -109,6 +109,7 @@
             this.agregarNuevaMarcaToolStripMenuItem.Name = "agregarNuevaMarcaToolStripMenuItem";
             this.agregarNuevaMarcaToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.agregarNuevaMarcaToolStripMenuItem.Text = "&Agregar nueva marca";
+            this.agregarNuevaMarcaToolStripMenuItem.Click += new System.EventHandler(this.agregarNuevaMarcaToolStripMenuItem_Click);
             // 
             // newToolStripMenuItem
             // 
@@ -146,6 +147,7 @@
             this.agregarAlmacenToolStripMenuItem.Name = "agregarAlmacenToolStripMenuItem";
             this.agregarAlmacenToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.agregarAlmacenToolStripMenuItem.Text = "&Agregar almacén";
+            this.agregarAlmacenToolStripMenuItem.Click += new System.EventHandler(this.agregarAlmacenToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 

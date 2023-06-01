@@ -107,5 +107,19 @@ namespace CESistemaVenta.Presentacion
         {
 
         }
+
+        private void agregarNuevaMarcaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMarca childForm = new FrmMarca();
+            childForm.Text = "Ventana agregar marca ";
+            childForm.Show();
+        }
+
+        private void agregarAlmacenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAlmacen childForm = new FrmAlmacen();
+            childForm.Text = "Ventana agregar almacen ";
+            childForm.Show();
+        }
     }
 }

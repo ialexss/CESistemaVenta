@@ -59,6 +59,7 @@
             this.btnBuscar.TabIndex = 16;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txbBuscar
             // 
@@ -84,6 +85,7 @@
             this.btnGuardar.TabIndex = 13;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txbNombre
             // 
@@ -146,7 +148,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txbBuscar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnGuardar;
@@ -154,5 +155,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnBuscar;
     }
 }
