@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CESistemaVenta.Negocio
 {
-    public class NMarca:Contexto 
+    public class NAlmacen:Contexto 
     {
         CasoEstudioSistemaVentasEntities Esquema;
 
-        public NMarca()
+        public NAlmacen()
         {
             Esquema =this.TraeEsquema();
         }
@@ -19,7 +19,7 @@ namespace CESistemaVenta.Negocio
         {
             try
             {
-                return (from e in Esquema.Marca select e.Id).Max() + 1;
+                return (from e in Esquema.Almacen select e.Id).Max() + 1;
             }
             catch (Exception ex)
             {
@@ -27,25 +27,25 @@ namespace CESistemaVenta.Negocio
             }
             
         }
-        public Boolean InsertarMarca(Marca ObjMarca)
+        public Boolean InsertarAlmacen(Almacen ObjAlmacen)
         {
-            Esquema.Marca.Add(ObjMarca);
+            Esquema.Almacen.Add(ObjAlmacen);
             return Esquema.SaveChanges() == 1;
         }
-        public List<Marca> TraerMarca(int id)
+        public List<Almacen> TraerAlmacen(int id)
         {
             if (id == 0)
             {
-                return (from e in Esquema.Marca select e).ToList();
+                return (from e in Esquema.Almacen select e).ToList();
             }
             else
             {
-                return (from e in Esquema.Marca where e.Id.Equals(id) select e).ToList();
+                return (from e in Esquema.Almacen where e.Id.Equals(id) select e).ToList();
             }
         }
-        public List<Marca> TraerMarcaPorNombre(string NombreMarca)
+        public List<Almacen> TraerAlmacenPorNombre(string NombreAlmacen)
         {
-            return (from e in Esquema.Marca where e.NombreMarca.ToUpper().StartsWith(NombreMarca.ToUpper()) select e).ToList();
+            return (from e in Esquema.Almacen where e.Almacen1.ToUpper().StartsWith(NombreAlmacen.ToUpper()) select e).ToList();
         }
     }
 }
