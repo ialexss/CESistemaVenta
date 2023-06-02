@@ -71,6 +71,24 @@
     <Compile Include="FrmAlmacen.Designer.cs">
       <DependentUpon>FrmAlmacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmClienteJuridico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClienteJuridico.Designer.cs">
+      <DependentUpon>FrmClienteJuridico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClienteNatural.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClienteNatural.Designer.cs">
+      <DependentUpon>FrmClienteNatural.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientes.Designer.cs">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFormularioPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,10 +107,25 @@
     <Compile Include="FrmPaisProcedencia.Designer.cs">
       <DependentUpon>FrmPaisProcedencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductos.Designer.cs">
+      <DependentUpon>FrmProductos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVentas.Designer.cs">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAlmacen.resx">
       <DependentUpon>FrmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientes.resx">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFormularioPrincipal.resx">
       <DependentUpon>FrmFormularioPrincipal.cs</DependentUpon>
@@ -102,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPaisProcedencia.resx">
       <DependentUpon>FrmPaisProcedencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProductos.resx">
+      <DependentUpon>FrmProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVentas.resx">
+      <DependentUpon>FrmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

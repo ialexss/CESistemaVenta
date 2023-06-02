@@ -336,7 +336,7 @@
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(174, 158);
             this.btnVentas.TabIndex = 4;
-            this.btnVentas.Text = "Ventas";
+            this.btnVentas.Text = "Venta";
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnVentas.UseVisualStyleBackColor = false;

@@ -38,6 +38,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txbId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(52, 100);
+            this.btnGuardar.Location = new System.Drawing.Point(52, 114);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 13;
@@ -89,7 +91,7 @@
             // 
             // txbNombre
             // 
-            this.txbNombre.Location = new System.Drawing.Point(138, 61);
+            this.txbNombre.Location = new System.Drawing.Point(159, 62);
             this.txbNombre.Name = "txbNombre";
             this.txbNombre.Size = new System.Drawing.Size(171, 20);
             this.txbNombre.TabIndex = 12;
@@ -106,7 +108,7 @@
             // txbId
             // 
             this.txbId.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.txbId.Location = new System.Drawing.Point(138, 35);
+            this.txbId.Location = new System.Drawing.Point(159, 34);
             this.txbId.Name = "txbId";
             this.txbId.ReadOnly = true;
             this.txbId.Size = new System.Drawing.Size(171, 20);
@@ -122,11 +124,35 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Codigo";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(49, 90);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "País de procedencia";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Bolivia",
+            "Brasil",
+            "Argentina"});
+            this.comboBox1.Location = new System.Drawing.Point(159, 89);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(171, 21);
+            this.comboBox1.TabIndex = 19;
+            // 
             // FrmMarca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 450);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txbBuscar);
@@ -137,7 +163,9 @@
             this.Controls.Add(this.txbId);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmMarca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar marca";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -156,5 +184,7 @@
         private System.Windows.Forms.TextBox txbId;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
