@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductos));
             this.txbId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txbNombre = new System.Windows.Forms.TextBox();
@@ -169,6 +170,7 @@
             this.button1.TabIndex = 17;
             this.button1.Text = "Agregar marca";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -178,6 +180,7 @@
             this.button2.TabIndex = 18;
             this.button2.Text = "Agregar almacen";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
@@ -217,8 +220,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txbId);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmProductos";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

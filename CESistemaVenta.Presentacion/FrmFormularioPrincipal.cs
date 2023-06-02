@@ -135,5 +135,33 @@ namespace CESistemaVenta.Presentacion
             childForm.Text = "Ventana agregar cliente juridico ";
             childForm.Show();
         }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            FrmClientes childForm = new FrmClientes();
+            childForm.Text = "Ventana gestionar clientes ";
+            childForm.Show();
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            FrmVentas childForm = new FrmVentas();
+            childForm.Text = "Ventana gestionar ventas ";
+            childForm.Show();
+        }
+
+        private void btnProductos_Click(object sender, EventArgs e)
+        {
+            FrmProductos childForm = new FrmProductos();
+            childForm.Text = "Ventana gestionar productos ";
+            childForm.Show();
+        }
+
+        private void btnAlmacen_Click(object sender, EventArgs e)
+        {
+            FrmGestionarAlmacen childForm = new FrmGestionarAlmacen();
+            childForm.Text = "Ventana gestionar almacén ";
+            childForm.Show();
+        }
     }
 }

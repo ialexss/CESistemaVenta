@@ -342,6 +342,7 @@
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVentas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnVentas.UseVisualStyleBackColor = false;
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // btnProductos
             // 
@@ -361,6 +362,7 @@
             this.btnProductos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnProductos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnProductos.UseVisualStyleBackColor = false;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
             // 
             // btnAlmacen
             // 
@@ -380,6 +382,7 @@
             this.btnAlmacen.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAlmacen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAlmacen.UseVisualStyleBackColor = false;
+            this.btnAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
             // 
             // btnClientes
             // 
@@ -399,6 +402,7 @@
             this.btnClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
             // FrmFormularioPrincipal
             // 

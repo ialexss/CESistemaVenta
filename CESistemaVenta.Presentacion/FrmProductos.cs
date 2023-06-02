@@ -16,5 +16,19 @@ namespace CESistemaVenta.Presentacion
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmMarca childForm = new FrmMarca();
+            childForm.Text = "Ventana agregar marca ";
+            childForm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmAlmacen childForm = new FrmAlmacen();
+            childForm.Text = "Ventana agregar almacen ";
+            childForm.Show();
+        }
     }
 }
