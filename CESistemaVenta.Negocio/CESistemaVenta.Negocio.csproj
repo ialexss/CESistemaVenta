@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NMarca.cs" />
     <Compile Include="NPaisProcedencia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
