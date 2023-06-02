@@ -130,12 +130,14 @@
             this.agregarClienteNaturalToolStripMenuItem.Name = "agregarClienteNaturalToolStripMenuItem";
             this.agregarClienteNaturalToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.agregarClienteNaturalToolStripMenuItem.Text = "&Agregar cliente natural";
+            this.agregarClienteNaturalToolStripMenuItem.Click += new System.EventHandler(this.agregarClienteNaturalToolStripMenuItem_Click);
             // 
             // agregarClienteJuridicoToolStripMenuItem
             // 
             this.agregarClienteJuridicoToolStripMenuItem.Name = "agregarClienteJuridicoToolStripMenuItem";
             this.agregarClienteJuridicoToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.agregarClienteJuridicoToolStripMenuItem.Text = "&Agregar cliente juridico";
+            this.agregarClienteJuridicoToolStripMenuItem.Click += new System.EventHandler(this.agregarClienteJuridicoToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
