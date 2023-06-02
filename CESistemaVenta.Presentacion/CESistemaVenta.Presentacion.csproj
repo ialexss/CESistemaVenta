@@ -71,6 +71,18 @@
     <Compile Include="FrmAlmacen.Designer.cs">
       <DependentUpon>FrmAlmacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmClienteJuridico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClienteJuridico.Designer.cs">
+      <DependentUpon>FrmClienteJuridico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClienteNatural.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClienteNatural.Designer.cs">
+      <DependentUpon>FrmClienteNatural.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFormularioPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +105,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAlmacen.resx">
       <DependentUpon>FrmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClienteJuridico.resx">
+      <DependentUpon>FrmClienteJuridico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClienteNatural.resx">
+      <DependentUpon>FrmClienteNatural.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFormularioPrincipal.resx">
       <DependentUpon>FrmFormularioPrincipal.cs</DependentUpon>
